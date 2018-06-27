@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'page.origin' | translate }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page5">
+    <div *ngIf="list">
+      <div *ngIf="origineList.length>0">
+          <ion-list>
+            <ion-item *ngFor="let origine of origineList" (click)="editOrigine(origine)">
+              {{ origine.pays }} - {{origine.region}}
+              <button ion-button item-end clear icon-end>  
+                <ion-icon color="dark" name='md-arrow-dropright-circle'></ion-icon>
+              </button>  
+            </ion-item>
+        </ion-list>
+      </div>
+      <button id="region-button5" ion-button color="positive" block (click)="editOrigine(origine)">
+          {{'general.add' | translate }} {{'origin.region' | translate }}
+        </button>
+    </div>
+    <div *ngIf="!list">
+        <alert></alert>
+        <form [formGroup]="origineForm" id="origine-form4">
+          <ion-item id="origine-input1">
+            <ion-label floating translate>
+              origin.country
+            </ion-label>
+            <ion-input [(ngModel)]="origine.pays" type="text" placeholder="{{ 'origin.originCountry' | translate }}" formControlName="pays" text-right
+            [class.invalid]="!origineForm.controls.pays.valid && (origineForm.controls.pays.dirty || submitted)"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="!origineForm.controls.pays.valid  && (origineForm.controls.pays.dirty || submitted)">
+            <p class="invalid">{{'origine.pays' | translate }} {{"general.required" | translate }}</p>
+          </ion-item>
+          <ion-item id="origine-input2">
+            <ion-label floating translate>
+              origin.region
+            </ion-label>
+            <ion-input [(ngModel)]="origine.region" type="text" placeholder="{{ 'origin.originRegion' | translate }}" formControlName="region" text-right
+            [class.invalid]="!origineForm.controls.region.valid && (origineForm.controls.region.dirty || submitted)"></ion-input>
+          </ion-item>
+          <p *ngIf="origineForm.hasError('double')" [class.invalid]="origineForm.hasError('double')">{{ 'origin.origineDouble' | translate }}</p>
+          <button [disabled]="!origineForm.valid" id="region-button5" ion-button color="primary" block (click)="saveOrigine(origine)">
+<!--             <button [disabled]="!origineForm.valid" id="region-button5" ion-button color="primary" block (click)="saveOrigine(origine)">
+ -->              {{'general.save' | translate }}
+          </button>
+          <button *ngIf="!newOrigine" id="region-button5" ion-button color="danger" block (click)="deleteOrigine(origine)">
+              {{'general.suppress' | translate }}
+          </button>
+      </form>
+  </div>
+    
+</ion-content>

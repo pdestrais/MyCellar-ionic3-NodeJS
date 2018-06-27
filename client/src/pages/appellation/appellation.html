@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'page.appellation' | translate }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page5">
+  <div *ngIf="list">
+      <div *ngIf="appellationList.length>0">
+        <ion-list>
+          <ion-item *ngFor="let appellation of appellationList" (click)="editAppellation(appellation)">
+            {{ appellation.courte }} - {{appellation.longue}}
+            <button ion-button item-end clear icon-end>  
+              <ion-icon color="dark" name='md-arrow-dropright-circle'></ion-icon>
+            </button>  
+          </ion-item>
+        </ion-list>
+      </div>
+      <button id="longue-button5" ion-button color="positive" block (click)="editAppellation(appellation)">
+          {{'general.add' | translate }} {{'appellation.appellation' | translate }}
+        </button>
+  </div>
+  <div *ngIf="!list">
+      <alert></alert>
+      <form [formGroup]="appellationForm" id="appellation-form4">
+        <ion-item id="appellation-input1">
+          <ion-label floating translate>
+            appellation.short
+          </ion-label>
+          <ion-input [(ngModel)]="appellation.courte" type="text" placeholder="{{ 'appellation.appellationShort' | translate }}" formControlName="courte" text-right
+          [class.invalid]="!appellationForm.controls.courte.valid && (appellationForm.controls.courte.dirty || submitted)"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!appellationForm.controls.courte.valid  && (appellationForm.controls.courte.dirty || submitted)">
+          <p class="invalid">{{'appellation.courte' | translate }} {{"general.required" | translate }}</p>
+        </ion-item>
+        <ion-item id="appellation-input2">
+          <ion-label floating translate>
+            appellation.long
+          </ion-label>
+          <ion-input [(ngModel)]="appellation.longue" type="text" placeholder="{{ 'appellation.appellationLong' | translate }}" formControlName="longue" text-right
+          [class.invalid]="!appellationForm.controls.longue.valid && (appellationForm.controls.longue.dirty || submitted)"></ion-input>
+        </ion-item>
+        <p *ngIf="appellationForm.hasError('double')" [class.invalid]=true>{{ 'appellation.double' | translate }}</p>
+      </form>
+      <button [disabled]="!appellationForm.valid" id="longue-button5" ion-button color="primary" block (click)="saveAppellation(appellation)">
+                {{'general.save' | translate }}
+      </button>
+      <button id="longue-button5" ion-button color="danger" block (click)="deleteAppellation(appellation)">
+          {{'general.suppress' | translate }}
+      </button>
+  </div>
+  
+</ion-content>

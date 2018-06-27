@@ -1,0 +1,5 @@
+---
+applications:
+ - name: myCellarApp-ionic3
+   random-route: true
+   memory: 128M
