@@ -39,6 +39,7 @@
     "fast-html-parser": "^1.0.1",
     "ionic-angular": "3.7.1",
     "ionic-plugin-keyboard": "^2.2.1",
+    "ionic2-super-tabs": "^4.2.2",
     "ionicons": "3.0.0",
     "jspdf": "^1.3.5",
     "moment": "^2.19.3",

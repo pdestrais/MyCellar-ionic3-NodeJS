@@ -1,8 +1,14 @@
+import { typeReportPage } from './../pages/typeReport/typeReportPage';
+import { readyToDrinkPage } from './../pages/readyToDrink/readyToDrinkPage';
+import { yearlyReportPage } from './../pages/yearlyReport/yearlyReportPage';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+
+import { SuperTabsModule } from 'ionic2-super-tabs';
+
 //import { NavController } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { RapportPage } from '../pages/rapport/rapport';
@@ -54,14 +60,18 @@ export function HttpLoaderFactory(http: HttpClient) {
     SearchPage,
     AlertComponent,
     ModalPage,
-    AboutPage
+    AboutPage,
+    yearlyReportPage,
+    readyToDrinkPage,
+    typeReportPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp),  
+    IonicModule.forRoot(MyApp), 
+    SuperTabsModule.forRoot(), 
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,
@@ -85,7 +95,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     StatsPage,
     SearchPage,
     ModalPage,
-    AboutPage
+    AboutPage,
+    yearlyReportPage,
+    readyToDrinkPage,
+    typeReportPage
   ],
   providers: [
     StatusBar,

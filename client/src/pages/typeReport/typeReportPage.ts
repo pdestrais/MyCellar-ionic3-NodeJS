@@ -1,5 +1,3 @@
-import { readyToDrinkPage } from './../readyToDrink/readyToDrinkPage';
-import { yearlyReportPage } from './../yearlyReport/yearlyReportPage';
 import { LoggerService } from './../../services/log4ts/logger.service';
 import { VinPage } from './../vin/vin';
 import { Component } from '@angular/core';
@@ -8,14 +6,13 @@ import { PouchdbService } from './../../services/pouchdb.service';
 import { VinModel } from '../../models/cellar.model'
 import * as d3 from 'd3';
 import moment from 'moment';
-import { typeReportPage } from '../typeReport/typeReportPage';
 //import { d3 } from 'd3';
 
 @Component({
-  selector: 'page-rapport',
-  templateUrl: 'rapport.html'
+  selector: 'typeReport',
+  templateUrl: 'typeReportPage.html'
 })
-export class RapportPage {
+export class typeReportPage {
 
   private vins:Array<VinModel>;
   private vinsFiltered:Array<VinModel>;
@@ -24,10 +21,6 @@ export class RapportPage {
   private typesOrigineGrouping:Array<any> =[];
   private typesOrigineYearGrouping:Array<any> =[];
   private breadcrumb:Array<any>=[];
-
-  yearlyReport: any = yearlyReportPage;
-  typeReport: any = typeReportPage;
-  readyToDrink: any = readyToDrinkPage;
   
   constructor(public navCtrl: NavController,public navParams: NavParams, public pouch:PouchdbService, private logger:LoggerService) {
     this.logger.log("[Rapport - constructor]called");
@@ -102,15 +95,15 @@ export class RapportPage {
   }
 
   selectType(type:any) {
-    this.navCtrl.push(RapportPage,{ddStruct:{type:type}});
+    this.navCtrl.push(typeReportPage,{ddStruct:{type:type}});
   }
 
   selectOrigine(type:any,origine:any) {
-    this.navCtrl.push(RapportPage,{ddStruct:{type:type,origine:origine}});
+    this.navCtrl.push(typeReportPage,{ddStruct:{type:type,origine:origine}});
   }
 
   selectYear(type:any,origine:any,year:any) {
-    this.navCtrl.push(RapportPage,{ddStruct:{type:type,origine:origine,year:year}});
+    this.navCtrl.push(typeReportPage,{ddStruct:{type:type,origine:origine,year:year}});
   }
 
   selectWine(wine) {
@@ -133,7 +126,7 @@ export class RapportPage {
           this.readyToDrinkList.push(v);
       } 
     });       
-    this.navCtrl.push(RapportPage,{readyToDrinkList:this.readyToDrinkList});
+    this.navCtrl.push(typeReportPage,{readyToDrinkList:this.readyToDrinkList});
   }
 
 }

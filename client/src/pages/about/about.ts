@@ -17,7 +17,7 @@ import { Http } from '@angular/http';
 })
 export class AboutPage {
 
-  public appInfo:any={name : "MyCellar", version : "1.9", author: "Philippe Destrais"};
+  public appInfo:any={name : "MyCellar", version : "1.10", author: "Philippe Destrais"};
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public logger:LoggerService) {
   }

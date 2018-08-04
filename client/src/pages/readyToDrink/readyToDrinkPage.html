@@ -1,0 +1,22 @@
+<ion-content padding class="outer-content" id="page1">
+  <ion-list>
+    <ion-list-header>
+      {{'report.readyForDrinkingHeader' | translate }}
+      <button ion-button icon-only item-end clear>
+        <ion-icon name="list"></ion-icon>
+      </button>
+    </ion-list-header>
+    <ion-item>
+        <ion-card *ngFor="let wine of readyToDrinkList" (click)="selectWine(wine)">
+            <ion-card-header>
+              {{wine.nom}}
+            </ion-card-header>
+            <ion-card-content>
+              {{'wine.price' | translate }} : {{wine.prixAchat}} - {{'wine.location' | translate }} : {{wine.localisation}}
+              <br> {{'wine.bottlesLeft' | translate }} :
+              <ion-badge item-end>{{ wine.nbreBouteillesReste}}</ion-badge>
+            </ion-card-content>
+          </ion-card>  
+    </ion-item>
+  </ion-list>
+</ion-content>
