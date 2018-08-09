@@ -37,7 +37,7 @@ export class yearlyReportPage {
         //let viewStack:any = this.navCtrl._views;
         this.breadcrumb[0] =  {selected:ddStruct.type,back:3};
         this.breadcrumb[1] =  {selected:ddStruct.year,back:2};
-        this.breadcrumb[2] =  {selected:ddStruct.origin,back:1};
+        this.breadcrumb[2] =  {selected:ddStruct.origine,back:1};
         this.vinsFiltered = this.vins.filter(v => {
           return (v.nbreBouteillesReste != 0 && 
               v.type.nom == ddStruct.type.key && 
@@ -88,7 +88,7 @@ export class yearlyReportPage {
   }
 
   selectOrigine(type:any,year:any,origine:any) {
-    this.navCtrl.push(yearlyReportPage,{ddStruct:{type:type,origine:origine,year:year}});
+    this.navCtrl.push(yearlyReportPage,{ddStruct:{type:type,year:year,origine:origine}});
   }
 
   selectYear(type:any,year:any) {

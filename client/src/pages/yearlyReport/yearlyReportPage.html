@@ -36,7 +36,7 @@
               </ion-item>
             </div>
             <div *ngIf="typesYearOrigineGrouping && typesYearOrigineGrouping.length>0">
-              <ion-item ion-item *ngFor="let origine of typesYearOrigineGrouping" (click)="selectOrigine(breadcrumb[0].selected,breadcrumb[1].selected,year)">
+              <ion-item ion-item *ngFor="let origine of typesYearOrigineGrouping" (click)="selectOrigine(breadcrumb[0].selected,breadcrumb[1].selected,origine)">
                 {{ origine.key }}
                 <ion-badge item-end>{{ origine.value }}</ion-badge>
                 <button ion-button item-end clear icon-end>
