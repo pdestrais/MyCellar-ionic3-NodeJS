@@ -38,7 +38,7 @@ export class RapportPDFPage {
         console.log("[Rapport - cellarToPDF]#wine loaded : "+this.vins.length);
         // first report dimension is wine type
         this.typesGrouping = d3.nest()
-        .key(function(d:any) { return d.type.nom; })
+        .key(function(d:any) { return d.type.nom; }).sortKeys(d3.ascending)
         .rollup(function(v) { return d3.sum(v, function(d:any) { return d.nbreBouteillesReste; }); })
         .entries(this.vins.filter(function(d) { return (d.nbreBouteillesReste !=0) }));
         console.log("[Rapport - ionViewDidLoad]typesGrouping : "+JSON.stringify(this.typesGrouping));
@@ -62,7 +62,7 @@ export class RapportPDFPage {
 
             // second report dimension is wine origin
             this.typesOrigineGrouping = d3.nest()
-            .key(function(d:any) { return d.origine.pays+' - '+d.origine.region; })
+            .key(function(d:any) { return d.origine.pays+' - '+d.origine.region; }).sortKeys(d3.ascending)
             .rollup(function(v) { return d3.sum(v, function(d:any) { return d.nbreBouteillesReste; }); })
             .entries(this.vins.filter(function(d) { return (d.nbreBouteillesReste !=0 && 
                                                             d.type.nom == itemType.key) 
@@ -92,7 +92,7 @@ export class RapportPDFPage {
 
                 // third report dimension is wine years            
                 this.typesOrigineYearGrouping = d3.nest()
-                .key(function(d:any) { return d.annee; })
+                .key(function(d:any) { return d.annee; }).sortKeys(d3.ascending)
                 .rollup(function(v) { return d3.sum(v, function(d:any) { return d.nbreBouteillesReste; }); })
                 .entries(this.vins.filter(function(d) { return (d.nbreBouteillesReste !=0 && 
                                                                 d.type.nom == itemType.key && 
