@@ -47,7 +47,7 @@ export class VinPage implements OnInit,OnDestroy {
               private platform:Platform,
               public logger:LoggerService) {
     this.logger.log('[VinPage constructor]params is :'+JSON.stringify(navParams));
-    this.vin = new VinModel('','','',0,0,0,'','','','',[],'',new AppellationModel('','',''),new OrigineModel('','',''),new TypeModel('',''),'',0,[]);
+    this.vin = new VinModel('','','',0,0,0,'','','','',[],'',new AppellationModel('','',''),new OrigineModel('','',''),new TypeModel('',''),'','',0,[]);
     this.pouch.getDocsOfType('vin').then(vins => this.vinsMap = new Map(vins.map((v) => [v.nom+v.annee, v])));
     this.nameYearForm = formBuilder.group({
             nom: ['',Validators.required],
@@ -98,17 +98,17 @@ export class VinPage implements OnInit,OnDestroy {
                     this.vin = new VinModel('','','',0,0,0,now.format('YYYY-MM-DD'),'','','',[],'',
                                        new AppellationModel('','',''),
                                        new OrigineModel('','',''),
-                                       new TypeModel(preselectedType._id,preselectedType.nom),'',0,[]);
+                                       new TypeModel(preselectedType._id,preselectedType.nom),'','',0,[]);
                 else
                     this.vin = new VinModel('','','',0,0,0,now.format('YYYY-MM-DD'),'','','',[],'',
                                             new AppellationModel('','',''),
                                             new OrigineModel('','',''),
-                                            new TypeModel('',''),'',0,[]);    
+                                            new TypeModel('',''),'','',0,[]);    
            } else
                this.vin = new VinModel('','','',0,0,0,now.format('YYYY-MM-DD'),'','','',[],'',
                                    new AppellationModel('','',''),
                                    new OrigineModel('','',''),
-                                   new TypeModel('',''),'',0,[]);    
+                                   new TypeModel('',''),'','',0,[]);    
        }
    });
 

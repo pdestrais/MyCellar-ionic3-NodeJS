@@ -47,7 +47,8 @@
     "minmax":"must 4 digit length",
     "apogee":"apogee",
     "GWSScore": "GWS Score",
-    "double":"A wine with the same name and year already exists"
+    "double":"A wine with the same name and year already exists",
+    "grape":"Grape"
   },
   "appellation":{
     "appellation":"appellation",
@@ -73,7 +74,10 @@
   "report":{
     "content":"Cellar content",
     "readyForDrinking":"What's ready for drinking ?",
-    "readyForDrinkingHeader":"Wines at their apogee now :"
+    "readyForDrinkingHeader":"Wines at their apogee now :",
+    "yearlyReport":"Yearly report",
+    "typeReport":"Type Report",
+    "readyToDrink":"Ready to Drink"
   },
   "stats":{
     "from":"from",

@@ -10,10 +10,158 @@
 </ion-header>
 <ion-content padding class="outer-content" id="page1">
     <super-tabs>
-        <super-tab [root]="yearlyReport" title="yearly report"></super-tab>
-        <super-tab [root]="typeReport" title="type report"></super-tab>
-        <super-tab [root]="readyToDrink" title="ready to drink"></super-tab>
+        <super-tab [root]="yearlyReport" title="{{'report.yearlyReport' | translate }}"></super-tab>
+        <super-tab [root]="typeReport" title="{{'report.typeReport' | translate }}"></super-tab>
+        <super-tab [root]="readyToDrink" title="{{'report.readyToDrink' | translate }}"></super-tab>
       </super-tabs> 
+<!--   <div *ngIf="!readyToDrinkList">
+      <ion-list>
+          <ion-list-header>
+            {{'report.content' | translate }}
+            <button ion-button icon-only item-end clear>
+              <ion-icon name="book"></ion-icon>
+            </button>
+          </ion-list-header>
+      
+          <ion-item-group>
+            <ion-item>
+              <ion-chip *ngFor="let bc of breadcrumb" (click)="goBack(bc.back)" color="light">
+                <ion-label>{{ bc.selected.key}} ({{bc.selected.value}}) </ion-label>
+                <button ion-button clear>
+                  <ion-icon name="arrow-dropright-circle"></ion-icon>
+                </button>
+              </ion-chip>
+            </ion-item>
+      
+            <div *ngIf="typesGrouping && typesGrouping.length>0">
+              <ion-item ion-item *ngFor="let type of typesGrouping" (click)="selectType(type)">
+                {{ type.key }}
+                <ion-badge item-end>{{ type.value }}</ion-badge>
+                <button ion-button item-end clear icon-end>
+                  <ion-icon color="dark" name='md-arrow-dropright-circle'></ion-icon>
+                </button>
+              </ion-item>
+            </div>
+            <div *ngIf="typesOrigineGrouping && typesOrigineGrouping.length>0">
+              <ion-item ion-item *ngFor="let origine of typesOrigineGrouping" (click)="selectOrigine(breadcrumb[0].selected,origine)">
+                {{ origine.key }}
+                <ion-badge item-end>{{ origine.value }}</ion-badge>
+                <button ion-button item-end clear icon-end>
+                  <ion-icon color="dark" name='md-arrow-dropright-circle'></ion-icon>
+                </button>
+              </ion-item>
+            </div>
+            <div *ngIf="typesOrigineYearGrouping && typesOrigineYearGrouping.length>0">
+              <ion-item ion-item *ngFor="let year of typesOrigineYearGrouping" (click)="selectYear(breadcrumb[0].selected,breadcrumb[1].selected,year)">
+                {{ year.key }}
+                <ion-badge item-end>{{ year.value }}</ion-badge>
+                <button ion-button item-end clear icon-end>
+                  <ion-icon color="dark" name='md-arrow-dropright-circle'></ion-icon>
+                </button>
+              </ion-item>
+            </div>
+            <div *ngIf="vinsFiltered && vinsFiltered.length>0">
+              <ion-card *ngFor="let wine of vinsFiltered" (click)="selectWine(wine)">
+                <ion-card-header>
+                  {{wine.nom}}
+                </ion-card-header>
+                <ion-card-content>
+                  {{'wine.price' | translate }} : {{wine.prixAchat}} - {{'wine.location' | translate }} : {{wine.localisation}}
+                  <br> {{'wine.bottlesLeft' | translate }} :
+                  <ion-badge item-end>{{ wine.nbreBouteillesReste}}</ion-badge>
+                </ion-card-content>
+              </ion-card>
+            </div>      
+          </ion-item-group>
+      
+          <div *ngIf="breadcrumb.length==0">
+            <ion-item-divider color="primary">
+              {{'report.readyForDrinking' | translate }}
+              <button ion-button item-end outline color="light" (click)="showReadyToDrink()">{{'general.show' | translate }}</button>
+            </ion-item-divider>
+          </div>
+        </ion-list>      
+  </div>
+  <div *ngIf="readyToDrinkList">
+    <ion-list>
+      <ion-list-header>
+        {{'report.readyForDrinkingHeader' | translate }}
+        <button ion-button icon-only item-end clear>
+          <ion-icon name="list"></ion-icon>
+<!--   <div *ngIf="!readyToDrinkList">
+      <ion-list>
+          <ion-list-header>
+            {{'report.content' | translate }}
+            <button ion-button icon-only item-end clear>
+              <ion-icon name="book"></ion-icon>
+            </button>
+          </ion-list-header>
+      
+          <ion-item-group>
+            <ion-item>
+              <ion-chip *ngFor="let bc of breadcrumb" (click)="goBack(bc.back)" color="light">
+                <ion-label>{{ bc.selected.key}} ({{bc.selected.value}}) </ion-label>
+                <button ion-button clear>
+                  <ion-icon name="arrow-dropright-circle"></ion-icon>
+                </button>
+              </ion-chip>
+            </ion-item>
+      
+            <div *ngIf="typesGrouping && typesGrouping.length>0">
+              <ion-item ion-item *ngFor="let type of typesGrouping" (click)="selectType(type)">
+                {{ type.key }}
+                <ion-badge item-end>{{ type.value }}</ion-badge>
+                <button ion-button item-end clear icon-end>
+                  <ion-icon color="dark" name='md-arrow-dropright-circle'></ion-icon>
+                </button>
+              </ion-item>
+            </div>
+            <div *ngIf="typesOrigineGrouping && typesOrigineGrouping.length>0">
+              <ion-item ion-item *ngFor="let origine of typesOrigineGrouping" (click)="selectOrigine(breadcrumb[0].selected,origine)">
+                {{ origine.key }}
+                <ion-badge item-end>{{ origine.value }}</ion-badge>
+                <button ion-button item-end clear icon-end>
+                  <ion-icon color="dark" name='md-arrow-dropright-circle'></ion-icon>
+                </button>
+              </ion-item>
+            </div>
+            <div *ngIf="typesOrigineYearGrouping && typesOrigineYearGrouping.length>0">
+              <ion-item ion-item *ngFor="let year of typesOrigineYearGrouping" (click)="selectYear(breadcrumb[0].selected,breadcrumb[1].selected,year)">
+                {{ year.key }}
+                <ion-badge item-end>{{ year.value }}</ion-badge>
+                <button ion-button item-end clear icon-end>
+                  <ion-icon color="dark" name='md-arrow-dropright-circle'></ion-icon>
+                </button>
+              </ion-item>
+            </div>
+            <div *ngIf="vinsFiltered && vinsFiltered.length>0">
+              <ion-card *ngFor="let wine of vinsFiltered" (click)="selectWine(wine)">
+                <ion-card-header>
+                  {{wine.nom}}
+                </ion-card-header>
+                <ion-card-content>
+                  {{'wine.price' | translate }} : {{wine.prixAchat}} - {{'wine.location' | translate }} : {{wine.localisation}}
+                  <br> {{'wine.bottlesLeft' | translate }} :
+                  <ion-badge item-end>{{ wine.nbreBouteillesReste}}</ion-badge>
+                </ion-card-content>
+              </ion-card>
+            </div>      
+          </ion-item-group>
+      
+          <div *ngIf="breadcrumb.length==0">
+            <ion-item-divider color="primary">
+              {{'report.readyForDrinking' | translate }}
+              <button ion-button item-end outline color="light" (click)="showReadyToDrink()">{{'general.show' | translate }}</button>
+            </ion-item-divider>
+          </div>
+        </ion-list>      
+  </div>
+  <div *ngIf="readyToDrinkList">
+    <ion-list>
+      <ion-list-header>
+        {{'report.readyForDrinkingHeader' | translate }}
+        <button ion-button icon-only item-end clear>
+          <ion-icon name="list"></ion-icon>
 <!--   <div *ngIf="!readyToDrinkList">
       <ion-list>
           <ion-list-header>

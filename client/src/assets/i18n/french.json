@@ -47,7 +47,8 @@
     "minmax":"doit avoir au moins 4 chiffres",
     "apogee":"apogee",
     "GWSScore": "Score GWS (Global Wine System)",
-    "double":"Un vin avec le même nom et la même année existe déjà"
+    "double":"Un vin avec le même nom et la même année existe déjà",
+    "grape":"Cépage"
   },
   "appellation":{
     "appellation":"appellation",
@@ -73,7 +74,10 @@
   "report":{
     "content":"Contenu de la cave",
     "readyForDrinking":"Quels sont les vins à leur apogée ?",
-    "readyForDrinkingHeader":"Les vins suivants sont à leur apogée maintenant :"
+    "readyForDrinkingHeader":"Les vins suivants sont à leur apogée maintenant :",
+    "yearlyReport":"Rapport par année",
+    "typeReport":"Rapport par type",
+    "readyToDrink":"Prêt à boire"
   },
   "stats":{
     "from":"à partir de ",

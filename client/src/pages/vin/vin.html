@@ -73,6 +73,12 @@
     <ion-item *ngIf="!vinForm.controls.appellation.valid  && (vinForm.controls.appellation.dirty || submitted)">
         <p class="invalid">{{'wine.appellation' | translate }} {{"general.required" | translate }}</p>
     </ion-item>
+    <ion-item id="vin-input15">
+        <ion-label>
+          {{'wine.grape' | translate }}
+        </ion-label>
+        <ion-input [(ngModel)]="vin.cepage" type="text" placeholder="100% Cabernet, ..." text-right [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
     <ion-item id="vin-input6">
       <ion-label>
         {{'wine.bottlesPurchase' | translate }}

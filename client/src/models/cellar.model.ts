@@ -14,6 +14,7 @@ export class VinModel {
                 public appellation:AppellationModel,
                 public origine:OrigineModel,
                 public type:TypeModel,
+                public cepage:string,
                 public apogee:string,
                 public GWSScore:number,
                 public cotes:Array<CoteModel>) {
@@ -31,6 +32,7 @@ export class VinModel {
     this.appellation = appellation;
     this.origine = origine;
     this.type = type;
+    this.cepage = cepage;
     this.apogee = apogee;
     this.GWSScore = GWSScore;
     this.cotes = cotes;
